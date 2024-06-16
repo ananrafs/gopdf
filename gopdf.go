@@ -1165,11 +1165,11 @@ func (gp *GoPdf) MultiCell(rectangle *Rect, text string) error {
 	length := len([]rune(text))
 
 	// get lineHeight
-	text, err := gp.curr.FontISubset.AddChars(text)
+	lText, err := gp.curr.FontISubset.AddChars(text)
 	if err != nil {
 		return err
 	}
-	_, lineHeight, _, err := createContent(gp.curr.FontISubset, text, gp.curr.FontSize, gp.curr.CharSpacing, nil)
+	_, lineHeight, _, err := createContent(gp.curr.FontISubset, lText, gp.curr.FontSize, gp.curr.CharSpacing, nil)
 	if err != nil {
 		return err
 	}
