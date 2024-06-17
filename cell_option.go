@@ -25,6 +25,7 @@ type CellOption struct {
 	CoefLineHeight         float64
 	CoefUnderlineThickness float64
 	BreakOption            *BreakOption
+	LineSpacing            *float64
 
 	extGStateIndexes []int
 }

@@ -1288,6 +1288,7 @@ func (gp *GoPdf) MultiCellWithOption(rectangle *Rect, text string, opt CellOptio
 	if err != nil {
 		return err
 	}
+	gp.addLineSpacing(&lineHeight, opt.LineSpacing)
 	gp.PointsToUnitsVar(&lineHeight)
 
 	textSplits, err := gp.SplitTextWithOption(text, rectangle.W, opt.BreakOption)
@@ -1302,6 +1303,15 @@ func (gp *GoPdf) MultiCellWithOption(rectangle *Rect, text string, opt CellOptio
 	}
 
 	return nil
+}
+
+func (gp *GoPdf) addLineSpacing(lineHeight *float64, lineSpacing *float64) {
+	if lineHeight == nil {
+		return
+	}
+	if lineSpacing != nil {
+		*lineHeight += *lineSpacing
+	}
 }
 
 // SplitText splits text into multiple lines based on width performing potential mid-word breaks.
